@@ -1,0 +1,518 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4D03341220F6437100986661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D03341120F6437100986661 /* AppDelegate.swift */; };
+		4D03341420F6437100986661 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D03341320F6437100986661 /* MessagesController.swift */; };
+		4D03341720F6437100986661 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D03341520F6437100986661 /* Main.storyboard */; };
+		4D03341920F6437200986661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D03341820F6437200986661 /* Assets.xcassets */; };
+		4D03341C20F6437200986661 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D03341A20F6437200986661 /* LaunchScreen.storyboard */; };
+		4D03342520F645AE00986661 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D03342420F645AE00986661 /* LoginController.swift */; };
+		4D1274B920F8E61E00DC14E2 /* LoginController+Constrains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1274B820F8E61E00DC14E2 /* LoginController+Constrains.swift */; };
+		4D1274BB20FE281000DC14E2 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1274BA20FE281000DC14E2 /* NewMessageViewController.swift */; };
+		4D1274BE20FE2E2E00DC14E2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1274BD20FE2E2E00DC14E2 /* User.swift */; };
+		4D1274C120FE35DD00DC14E2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1274C020FE35DD00DC14E2 /* UserCell.swift */; };
+		4D1274C32100B8BF00DC14E2 /* LoginController+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1274C22100B8BF00DC14E2 /* LoginController+Handlers.swift */; };
+		4D1274C72101EFEF00DC14E2 /* ImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1274C62101EFEF00DC14E2 /* ImageExtention.swift */; };
+		4DBE451B211DCB37003F6292 /* ChatLogController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE451A211DCB37003F6292 /* ChatLogController+CollectionView.swift */; };
+		4DBE451E211DD09D003F6292 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE451D211DD09D003F6292 /* ChatMessageCell.swift */; };
+		4DF4245920F77D8400FB5702 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DF4245820F77D8400FB5702 /* GoogleService-Info.plist */; };
+		4DF995FC2108A1090079634F /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF995FB2108A1090079634F /* ChatLogController.swift */; };
+		4DF995FE2110A9630079634F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF995FD2110A9630079634F /* Message.swift */; };
+		4DF996012111E4DE0079634F /* MessagesController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF996002111E4DE0079634F /* MessagesController+TableView.swift */; };
+		C7D8142321EBF447EB99C96E /* Pods_Lailai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20750C66099F3D560028D943 /* Pods_Lailai.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0D35FA388DBA72E8C02AC66D /* Pods-Lailai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lailai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lailai/Pods-Lailai.debug.xcconfig"; sourceTree = "<group>"; };
+		20750C66099F3D560028D943 /* Pods_Lailai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lailai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D03340E20F6437100986661 /* Lailai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lailai.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D03341120F6437100986661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4D03341320F6437100986661 /* MessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
+		4D03341620F6437100986661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4D03341820F6437200986661 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4D03341B20F6437200986661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4D03341D20F6437200986661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D03342420F645AE00986661 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		4D1274B820F8E61E00DC14E2 /* LoginController+Constrains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+Constrains.swift"; sourceTree = "<group>"; };
+		4D1274BA20FE281000DC14E2 /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
+		4D1274BD20FE2E2E00DC14E2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4D1274C020FE35DD00DC14E2 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		4D1274C22100B8BF00DC14E2 /* LoginController+Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+Handlers.swift"; sourceTree = "<group>"; };
+		4D1274C62101EFEF00DC14E2 /* ImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtention.swift; sourceTree = "<group>"; };
+		4DBE451A211DCB37003F6292 /* ChatLogController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatLogController+CollectionView.swift"; sourceTree = "<group>"; };
+		4DBE451D211DD09D003F6292 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		4DF4245820F77D8400FB5702 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4DF995FB2108A1090079634F /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
+		4DF995FD2110A9630079634F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		4DF996002111E4DE0079634F /* MessagesController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessagesController+TableView.swift"; sourceTree = "<group>"; };
+		F9EEF882893A81D990FD1824 /* Pods-Lailai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lailai.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lailai/Pods-Lailai.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4D03340B20F6437100986661 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7D8142321EBF447EB99C96E /* Pods_Lailai.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4D03340520F6437100986661 = {
+			isa = PBXGroup;
+			children = (
+				4D03341020F6437100986661 /* Lailai */,
+				4D03340F20F6437100986661 /* Products */,
+				56ED82E20DD822497A9B0C85 /* Pods */,
+				8E2BEAEFEE568ADCA22E853B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4D03340F20F6437100986661 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4D03340E20F6437100986661 /* Lailai.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4D03341020F6437100986661 /* Lailai */ = {
+			isa = PBXGroup;
+			children = (
+				4D1274C52101EFCF00DC14E2 /* Helpers */,
+				4D1274BC20FE2E2000DC14E2 /* Model */,
+				4D1274BF20FE35AF00DC14E2 /* View */,
+				4D03342320F6457300986661 /* Controller */,
+				4DBE451C211DCB9C003F6292 /* ChatLog */,
+				4D03341120F6437100986661 /* AppDelegate.swift */,
+				4D03341820F6437200986661 /* Assets.xcassets */,
+				4D03341D20F6437200986661 /* Info.plist */,
+				4DF4245820F77D8400FB5702 /* GoogleService-Info.plist */,
+			);
+			path = Lailai;
+			sourceTree = "<group>";
+		};
+		4D03342320F6457300986661 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4D1274C42101D90100DC14E2 /* Login */,
+				4DF995FF2111A46C0079634F /* Messages */,
+				4D1274BA20FE281000DC14E2 /* NewMessageViewController.swift */,
+				4DF995FB2108A1090079634F /* ChatLogController.swift */,
+				4DBE451A211DCB37003F6292 /* ChatLogController+CollectionView.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4D1274BC20FE2E2000DC14E2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4D1274BD20FE2E2E00DC14E2 /* User.swift */,
+				4DF995FD2110A9630079634F /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4D1274BF20FE35AF00DC14E2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4D03341520F6437100986661 /* Main.storyboard */,
+				4D03341A20F6437200986661 /* LaunchScreen.storyboard */,
+				4D1274C020FE35DD00DC14E2 /* UserCell.swift */,
+				4DBE451D211DD09D003F6292 /* ChatMessageCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4D1274C42101D90100DC14E2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4D03342420F645AE00986661 /* LoginController.swift */,
+				4D1274C22100B8BF00DC14E2 /* LoginController+Handlers.swift */,
+				4D1274B820F8E61E00DC14E2 /* LoginController+Constrains.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4D1274C52101EFCF00DC14E2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4D1274C62101EFEF00DC14E2 /* ImageExtention.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4DBE451C211DCB9C003F6292 /* ChatLog */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ChatLog;
+			sourceTree = "<group>";
+		};
+		4DF995FF2111A46C0079634F /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				4D03341320F6437100986661 /* MessagesController.swift */,
+				4DF996002111E4DE0079634F /* MessagesController+TableView.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		56ED82E20DD822497A9B0C85 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0D35FA388DBA72E8C02AC66D /* Pods-Lailai.debug.xcconfig */,
+				F9EEF882893A81D990FD1824 /* Pods-Lailai.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8E2BEAEFEE568ADCA22E853B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20750C66099F3D560028D943 /* Pods_Lailai.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4D03340D20F6437100986661 /* Lailai */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D03342020F6437200986661 /* Build configuration list for PBXNativeTarget "Lailai" */;
+			buildPhases = (
+				0B367DFFF9063C5CDDD9ACB9 /* [CP] Check Pods Manifest.lock */,
+				4D03340A20F6437100986661 /* Sources */,
+				4D03340B20F6437100986661 /* Frameworks */,
+				4D03340C20F6437100986661 /* Resources */,
+				D88BF7EA567352C5BDDCCDA0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Lailai;
+			productName = Lailai;
+			productReference = 4D03340E20F6437100986661 /* Lailai.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4D03340620F6437100986661 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = 22Round;
+				TargetAttributes = {
+					4D03340D20F6437100986661 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 4D03340920F6437100986661 /* Build configuration list for PBXProject "Lailai" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4D03340520F6437100986661;
+			productRefGroup = 4D03340F20F6437100986661 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4D03340D20F6437100986661 /* Lailai */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4D03340C20F6437100986661 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D03341C20F6437200986661 /* LaunchScreen.storyboard in Resources */,
+				4D03341920F6437200986661 /* Assets.xcassets in Resources */,
+				4D03341720F6437100986661 /* Main.storyboard in Resources */,
+				4DF4245920F77D8400FB5702 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B367DFFF9063C5CDDD9ACB9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lailai-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D88BF7EA567352C5BDDCCDA0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Lailai/Pods-Lailai-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lailai/Pods-Lailai-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4D03340A20F6437100986661 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DF995FC2108A1090079634F /* ChatLogController.swift in Sources */,
+				4D03341420F6437100986661 /* MessagesController.swift in Sources */,
+				4D1274BE20FE2E2E00DC14E2 /* User.swift in Sources */,
+				4DBE451B211DCB37003F6292 /* ChatLogController+CollectionView.swift in Sources */,
+				4DF996012111E4DE0079634F /* MessagesController+TableView.swift in Sources */,
+				4DBE451E211DD09D003F6292 /* ChatMessageCell.swift in Sources */,
+				4D1274C32100B8BF00DC14E2 /* LoginController+Handlers.swift in Sources */,
+				4D03342520F645AE00986661 /* LoginController.swift in Sources */,
+				4D1274BB20FE281000DC14E2 /* NewMessageViewController.swift in Sources */,
+				4DF995FE2110A9630079634F /* Message.swift in Sources */,
+				4D1274B920F8E61E00DC14E2 /* LoginController+Constrains.swift in Sources */,
+				4D1274C72101EFEF00DC14E2 /* ImageExtention.swift in Sources */,
+				4D03341220F6437100986661 /* AppDelegate.swift in Sources */,
+				4D1274C120FE35DD00DC14E2 /* UserCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4D03341520F6437100986661 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D03341620F6437100986661 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4D03341A20F6437200986661 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4D03341B20F6437200986661 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4D03341E20F6437200986661 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4D03341F20F6437200986661 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4D03342120F6437200986661 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D35FA388DBA72E8C02AC66D /* Pods-Lailai.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7U5VQCSFGM;
+				INFOPLIST_FILE = Lailai/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.22round.lailai;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4D03342220F6437200986661 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9EEF882893A81D990FD1824 /* Pods-Lailai.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7U5VQCSFGM;
+				INFOPLIST_FILE = Lailai/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.22round.lailai;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4D03340920F6437100986661 /* Build configuration list for PBXProject "Lailai" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D03341E20F6437200986661 /* Debug */,
+				4D03341F20F6437200986661 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4D03342020F6437200986661 /* Build configuration list for PBXNativeTarget "Lailai" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D03342120F6437200986661 /* Debug */,
+				4D03342220F6437200986661 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4D03340620F6437100986661 /* Project object */;
+}
