@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 extension ChatLogController {
     
@@ -25,11 +26,53 @@ extension ChatLogController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ChatMessageCell
         let message = messages[indexPath.row]
         cell.textView.text = message.text
+        
+        setupCell(cell: cell, message: message)
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 80)
+        var height:CGFloat = 80
+        
+        if let text = messages[indexPath.row].text {
+            height = estimateFrameForText(text: text).height + 20
+            if height < 34 {
+                height = 35
+            }
+        }
+        
+        let width = UIScreen.main.bounds.width
+        return CGSize(width: width, height: height)
+    }
+    
+    fileprivate func setupCell(cell:ChatMessageCell, message:Message) {
+        
+        if let profileImageUrl = self.user?.profileImageUrl {
+            cell.profileImageView.loadImageUsingCashWithURLString(urlString: profileImageUrl)
+        }
+        
+        if let text = message.text {
+            var cellBubbleWidth = estimateFrameForText(text: text).width + 32
+            if cellBubbleWidth < 45 {
+                cellBubbleWidth = 45
+            }
+            cell.bubbleWidthAnchor?.constant = cellBubbleWidth
+        }
+        
+        if message.fromId == Auth.auth().currentUser?.uid {
+            cell.bubbleView.backgroundColor = .lightBlue
+            cell.textView.textColor = .white
+            cell.bubbleViewLeftAnchor?.isActive = false
+            cell.bubbleViewRightAnchor?.isActive = true
+            cell.profileImageView.isHidden = true
+        }else {
+            cell.bubbleView.backgroundColor = .lightGrey
+            cell.textView.textColor = .black
+            cell.bubbleViewRightAnchor?.isActive = false
+            cell.bubbleViewLeftAnchor?.isActive = true
+            cell.profileImageView.isHidden = false
+        }
     }
     
     // MARK: UICollectionViewDelegate

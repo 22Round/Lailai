@@ -21,6 +21,7 @@
 		4D1274C72101EFEF00DC14E2 /* ImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1274C62101EFEF00DC14E2 /* ImageExtention.swift */; };
 		4DBE451B211DCB37003F6292 /* ChatLogController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE451A211DCB37003F6292 /* ChatLogController+CollectionView.swift */; };
 		4DBE451E211DD09D003F6292 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE451D211DD09D003F6292 /* ChatMessageCell.swift */; };
+		4DBE45212122CE47003F6292 /* UIColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE45202122CE47003F6292 /* UIColorExtention.swift */; };
 		4DF4245920F77D8400FB5702 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DF4245820F77D8400FB5702 /* GoogleService-Info.plist */; };
 		4DF995FC2108A1090079634F /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF995FB2108A1090079634F /* ChatLogController.swift */; };
 		4DF995FE2110A9630079634F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF995FD2110A9630079634F /* Message.swift */; };
@@ -47,6 +48,7 @@
 		4D1274C62101EFEF00DC14E2 /* ImageExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtention.swift; sourceTree = "<group>"; };
 		4DBE451A211DCB37003F6292 /* ChatLogController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatLogController+CollectionView.swift"; sourceTree = "<group>"; };
 		4DBE451D211DD09D003F6292 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		4DBE45202122CE47003F6292 /* UIColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtention.swift; sourceTree = "<group>"; };
 		4DF4245820F77D8400FB5702 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4DF995FB2108A1090079634F /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		4DF995FD2110A9630079634F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -106,8 +108,7 @@
 				4D1274C42101D90100DC14E2 /* Login */,
 				4DF995FF2111A46C0079634F /* Messages */,
 				4D1274BA20FE281000DC14E2 /* NewMessageViewController.swift */,
-				4DF995FB2108A1090079634F /* ChatLogController.swift */,
-				4DBE451A211DCB37003F6292 /* ChatLogController+CollectionView.swift */,
+				4DBE451F2122CD11003F6292 /* ChatLog */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -146,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				4D1274C62101EFEF00DC14E2 /* ImageExtention.swift */,
+				4DBE45202122CE47003F6292 /* UIColorExtention.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -153,6 +155,15 @@
 		4DBE451C211DCB9C003F6292 /* ChatLog */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = ChatLog;
+			sourceTree = "<group>";
+		};
+		4DBE451F2122CD11003F6292 /* ChatLog */ = {
+			isa = PBXGroup;
+			children = (
+				4DF995FB2108A1090079634F /* ChatLogController.swift */,
+				4DBE451A211DCB37003F6292 /* ChatLogController+CollectionView.swift */,
 			);
 			path = ChatLog;
 			sourceTree = "<group>";
@@ -302,6 +313,7 @@
 			files = (
 				4DF995FC2108A1090079634F /* ChatLogController.swift in Sources */,
 				4D03341420F6437100986661 /* MessagesController.swift in Sources */,
+				4DBE45212122CE47003F6292 /* UIColorExtention.swift in Sources */,
 				4D1274BE20FE2E2E00DC14E2 /* User.swift in Sources */,
 				4DBE451B211DCB37003F6292 /* ChatLogController+CollectionView.swift in Sources */,
 				4DF996012111E4DE0079634F /* MessagesController+TableView.swift in Sources */,

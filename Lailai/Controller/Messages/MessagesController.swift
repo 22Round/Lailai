@@ -16,6 +16,7 @@ class MessagesController: UITableViewController {
     var ref:DatabaseReference?
     var messages = [Message] ()
     var messagesDictionary = [String:Message]()
+    var timer:Timer?
     
     //MARK: - Constantas
     
@@ -61,6 +62,12 @@ class MessagesController: UITableViewController {
     
     @objc fileprivate func handleNewMessage() {
         
+        self.messages = Array(self.messagesDictionary.values)
+        self.messages.sort(by: { (message1, message2) -> Bool in
+            guard let m1 = message1.timestamp?.intValue, let m2 = message2.timestamp?.intValue else { return false }
+            return m1 > m2
+        })
+        
         let newMessageController = NewMessageViewController()
         newMessageController.messagesController = self
         let navController = UINavigationController(rootViewController: newMessageController)
@@ -71,37 +78,49 @@ class MessagesController: UITableViewController {
     //MARK: functions
     
     fileprivate func observeUserMessages(){
+        
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let ref = Database.database().reference().child("user-messages").child(uid)
+        
         ref.observe(.childAdded) { (snapshot) in
-            let messageId = snapshot.key
-            let messagesRef = Database.database().reference().child("messages").child(messageId)
-            messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                if let dictionary = snapshot.value as? [String:Any] {
-                    
-                    let message = Message()
-                    message.setValuesForKeys(dictionary)
-                    self.messages.append(message)
-                    
-                    if let toId = message.toId {
-                        self.messagesDictionary[toId] = message
-                        self.messages = Array(self.messagesDictionary.values)
-                        self.messages.sort(by: { (message1, message2) -> Bool in
-                            guard let m1 = message1.timestamp?.intValue, let m2 = message2.timestamp?.intValue else { return false }
-                            return m1 > m2
-                        })
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
+            
+            let userId = snapshot.key
+            
+            Database.database().reference().child("user-messages").child(uid).child(userId).queryLimited(toLast: 1).observeSingleEvent(of: .childAdded, with: { (snapShot) in
+                let messageId = snapShot.key
+                self.fetchMessageWith(messageId: messageId)
             })
         }
-    
-    
     }
     
+    fileprivate func fetchMessageWith(messageId:String) {
+        let messagesRef = Database.database().reference().child("messages").child(messageId)
+        
+        messagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String:Any] {
+                
+                let message = Message()
+                message.setValuesForKeys(dictionary)
+                self.messages.append(message)
+                
+                if let chatPartnerId = message.chatPartnerId() {
+                    self.messagesDictionary[chatPartnerId] = message
+                }
+                self.attemtReloadOfTable()
+            }
+        })
+    }
+    
+    fileprivate func attemtReloadOfTable(){
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
+    /*
     fileprivate func observeMessages() {
         let ref = Database.database().reference().child("messages")
         ref.observe(.childAdded, with: { (snapshot) in
@@ -127,6 +146,7 @@ class MessagesController: UITableViewController {
             }
         }, withCancel: nil)
     }
+ */
     
     fileprivate func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
