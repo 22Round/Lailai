@@ -16,6 +16,10 @@ class Message:NSObject {
     @objc var timestamp:NSNumber?
     @objc var toId:String?
     
+    @objc var imageUrl:String?
+    @objc var imageHeight:NSNumber?
+    @objc var imageWidth:NSNumber?
+    
     
     func chatPartnerId() -> String? {
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -26,5 +30,19 @@ class Message:NSObject {
             return ""
         }
         return (unWrapedFromId == userId ? toId : fromId)!
+    }
+    
+    init(dictionary: [String:AnyObject]) {
+        super.init()
+        
+        fromId = dictionary["fromId"] as? String
+        text = dictionary["text"] as? String
+        timestamp = dictionary["timestamp"] as? NSNumber
+        toId = dictionary["toId"] as? String
+        
+        imageUrl = dictionary["imageUrl"] as? String
+        imageHeight = dictionary["imageHeight"] as? NSNumber
+        imageWidth = dictionary["imageWidth"] as? NSNumber
+        
     }
 }

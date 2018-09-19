@@ -35,11 +35,15 @@ extension ChatLogController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var height:CGFloat = 80
         
-        if let text = messages[indexPath.row].text {
+        let message = messages[indexPath.row]
+        
+        if let text = message.text {
             height = estimateFrameForText(text: text).height + 20
             if height < 34 {
                 height = 35
             }
+        }else if let imageWidth = message.imageWidth?.floatValue, let imageHeight = message.imageHeight?.floatValue {
+            height = CGFloat(imageHeight / imageWidth * 200)
         }
         
         let width = UIScreen.main.bounds.width
@@ -58,6 +62,9 @@ extension ChatLogController {
                 cellBubbleWidth = 45
             }
             cell.bubbleWidthAnchor?.constant = cellBubbleWidth
+        } else if message.imageUrl != nil {
+            
+            cell.bubbleWidthAnchor?.constant = 200
         }
         
         if message.fromId == Auth.auth().currentUser?.uid {
@@ -72,6 +79,14 @@ extension ChatLogController {
             cell.bubbleViewRightAnchor?.isActive = false
             cell.bubbleViewLeftAnchor?.isActive = true
             cell.profileImageView.isHidden = false
+        }
+        
+        if let messageImageUrl = message.imageUrl {
+            cell.messageImageView.loadImageUsingCashWithURLString(urlString: messageImageUrl)
+            cell.messageImageView.isHidden = false
+            cell.bubbleView.backgroundColor = .clear
+        }else {
+            cell.messageImageView.isHidden = true
         }
     }
     

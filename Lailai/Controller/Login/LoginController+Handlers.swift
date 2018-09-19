@@ -54,7 +54,10 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
 
     
     
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         var selectedImageFromPicker:UIImage?
         
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
@@ -106,7 +109,6 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
         
         guard let password = passwordTextField.text, let email = emailTextField.text else { return }
         
-        
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             
             if error != nil {
@@ -139,7 +141,7 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
             let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).jpg")
             
             
-            guard let profileImage = self.profileImageView.image, let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) else { return }
+            guard let profileImage = self.profileImageView.image, let uploadData = profileImage.jpegData(compressionQuality: 0.1) else { return }
             
             
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
@@ -178,3 +180,8 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
 }
 
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
