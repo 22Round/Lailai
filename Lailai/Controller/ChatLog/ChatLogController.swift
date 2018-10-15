@@ -8,17 +8,23 @@
 
 import UIKit
 import Firebase
+import MobileCoreServices
+import AVFoundation
+import Photos
 
 class ChatLogController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: - Constanst
     
-    let reuseIdentifier = "Cell"
+    let reuseIdentifier = "ChatMessageCell"
     
     //MARK: - Vars
     
     var messages = [Message]()
     var containerViewBottomAnchor:NSLayoutConstraint?
+    var imageZoomStartImageFrame:CGRect?
+    var imageZoomBackground:UIView?
+    var imageZoomedFromChat:UIImageView?
     
     //MARK: - Components Closures
     
@@ -139,6 +145,16 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        
+        (0..<collectionView.numberOfSections).indices.forEach { sectionIndex in
+            (0..<collectionView.numberOfItems(inSection: sectionIndex)).indices.forEach { itemIndex in
+                
+                let indexPath = IndexPath(row: itemIndex, section: sectionIndex)
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ChatMessageCell else {return}
+                cell.handleRemoveFromStage()
+                
+            }
+        }
     }
     
     override var inputAccessoryView: UIView? {
@@ -154,10 +170,44 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     //MARK: - Functions
     
     @objc fileprivate func handleUploadTap() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.allowsEditing = true
-        imagePickerController.delegate = self
-        self.present(imagePickerController, animated: true)
+        
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        switch photoAuthorizationStatus {
+            case .authorized:
+                print("Access is granted by user")
+                checkPermission()
+            case .notDetermined:
+                PHPhotoLibrary.requestAuthorization({
+                    (newStatus) in
+                    print("status is \(newStatus)")
+                    if newStatus ==  PHAuthorizationStatus.authorized {
+                        /* do stuff here */
+                        print("success")
+                        self.checkPermission()
+                    }
+                })
+                print("It is not determined until now")
+            case .restricted:
+                // same same
+                print("User do not have access to photo album.")
+            case .denied:
+                // same same
+                print("User has denied the permission.")
+        }
+        
+    }
+    
+    func checkPermission() {
+        
+        DispatchQueue.main.async(execute: {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.allowsEditing = true
+            imagePickerController.delegate = self
+            imagePickerController.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true)
+        })
+
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -165,111 +215,27 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
         // Local variable inserted by Swift 4.2 migrator.
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
-
-        var selectedImageFromPicker:UIImage?
         
-        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-            selectedImageFromPicker = editedImage
-        }else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            selectedImageFromPicker = originalImage
-        }
-        
-        if let selectedImage = selectedImageFromPicker {
+        if let videoUrl = info["UIImagePickerControllerMediaURL"] as? URL {
             
-            self.uploadToFirebaseStorageUsingImage(image: selectedImage)
-
+            self.handleVideoSelectedFor(url: videoUrl)
+        } else {
+            
+            self.handleImageSelectedFor(info: info)
+            
         }
         
         self.dismiss(animated: true)
     }
     
     
-    fileprivate func uploadToFirebaseStorageUsingImage(image:UIImage) {
-        
-        let imageName = NSUUID().uuidString
-        let storageRef = Storage.storage().reference().child("message_images").child(imageName)
-        
-        guard let uploadData = image.jpegData(compressionQuality: 0.1) else { return }
-        
-        storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-            
-            if error != nil {
-                print(error ?? "")
-                return
-            }
-            
-            storageRef.downloadURL(completion: { (url, error) in
-                guard let downloadURL = url else { return }
-                
-                self.sendMessageWith(imageUrl: downloadURL.absoluteString, image: image)
-                
-            })
-        })
-    }
-    
-    fileprivate func sendMessageWith(imageUrl:String, image:UIImage) {
+    func sendMessageWith(imageUrl:String, image:UIImage) {
         
         let properties = ["imageUrl":imageUrl, "imageWidth": image.size.width, "imageHeight": image.size.height] as [String : AnyObject]
         sendMessageWith(properties: properties)
-    }
-    
-    fileprivate func sendMessageWith(properties: [String:AnyObject]) {
-        
-        let ref = Database.database().reference().child("messages")
-        let childRef = ref.childByAutoId()
-        
-        guard let fromId:String = Auth.auth().currentUser?.uid, let toId = user?.id else { return }
-        
-        let timeStamp:NSNumber = NSNumber(value: Int(Date().timeIntervalSince1970))
-        var values:[String:AnyObject] = ["toId":toId, "fromId":fromId, "timestamp":timeStamp] as [String : AnyObject]
-       
-        properties.forEach { values[$0] = $1 }
-        
-        
-        //        childRef.updateChildValues(value)
-        childRef.updateChildValues(values) { (error, ref) in
-            if error != nil {
-                print(error ?? "")
-                return
-            }
-            
-            self.inputTextField.text = nil
-            
-            let userMessageRef = Database.database().reference().child("user-messages").child(fromId).child(toId)
-            let messageId = childRef.key
-            userMessageRef.updateChildValues([messageId:1])
-            
-            let recipientUserMessagesRef = Database.database().reference().child("user-messages").child(toId).child(fromId)
-            recipientUserMessagesRef.updateChildValues([messageId:1])
-            
-        }
-    }
-    
-    fileprivate func observeMessages() {
-        
-        guard let uid = Auth.auth().currentUser?.uid, let toId = user?.id else { return }
-        
-        let userMessagesRef = Database.database().reference().child("user-messages").child(uid).child(toId)
-        userMessagesRef.observe(.childAdded) { (snapshot) in
-            let messageId = snapshot.key
-            let messageRef = Database.database().reference().child("messages").child(messageId)
-            messageRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                guard let dictionary = snapshot.value as? [String:AnyObject] else { return }
-                
-//                let message = Message()
-//                message.setValuesForKeys(dictionary)
-                
-                self.messages.append(Message(dictionary: dictionary))
-                
-                DispatchQueue.main.async {
-                    self.collectionView?.reloadData()
-                    let indexPath = IndexPath(item: self.messages.count-1, section: 0)
-                    self.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
-                }
-            })
-        }
     }
     
     fileprivate func setupKeyboardObservers() {
@@ -277,33 +243,6 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
 //        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyBoardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-    }
-    
-    @objc fileprivate func handleKeyDidShow(notification: NSNotification) {
-        if messages.count > 0 {
-            let indexPath = IndexPath(item: self.messages.count-1, section: 0)
-            self.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
-        }
-    }
-    
-    @objc fileprivate func handleKeyBoardWillShow(notification: NSNotification) {
-        guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        guard let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
-        
-        containerViewBottomAnchor?.constant = -keyboardFrame.height
-        
-        UIView.animate(withDuration: duration) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    @objc fileprivate func handleKeyBoardWillHide(notification: NSNotification) {
-        containerViewBottomAnchor?.constant = 0
-        
-        guard let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
-        UIView.animate(withDuration: duration) {
-            self.view.layoutIfNeeded()
-        }
     }
     
     fileprivate func setupInputComponents() {
@@ -344,6 +283,55 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     }
     
     //MARK: Handlers
+    
+    @objc fileprivate func handleKeyDidShow(notification: NSNotification) {
+        if messages.count > 0 {
+            let indexPath = IndexPath(item: self.messages.count-1, section: 0)
+            self.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+        }
+    }
+    
+    @objc fileprivate func handleKeyBoardWillShow(notification: NSNotification) {
+        guard let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        guard let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
+        
+        containerViewBottomAnchor?.constant = -keyboardFrame.height
+        
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc fileprivate func handleKeyBoardWillHide(notification: NSNotification) {
+        containerViewBottomAnchor?.constant = 0
+        
+        guard let duration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    deinit {
+        print("remove from here")
+    }
+    
+    func handleImageSelectedFor(info: [String : Any] ){
+        
+        var selectedImageFromPicker:UIImage?
+        
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            selectedImageFromPicker = editedImage
+        }else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            selectedImageFromPicker = originalImage
+        }
+        
+        if let selectedImage = selectedImageFromPicker {
+            
+            self.uploadToFirebaseStorageUsingImage(image: selectedImage) { (imageUrl) in
+                self.sendMessageWith(imageUrl: imageUrl, image: selectedImage)
+            }
+        }
+    }
     
     @objc func handleSend() {
         

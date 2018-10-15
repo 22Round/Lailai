@@ -25,6 +25,7 @@ extension ChatLogController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ChatMessageCell
         let message = messages[indexPath.row]
+        cell.message = message
         cell.textView.text = message.text
         
         setupCell(cell: cell, message: message)
@@ -52,6 +53,8 @@ extension ChatLogController {
     
     fileprivate func setupCell(cell:ChatMessageCell, message:Message) {
         
+        cell.chatLogController = self
+        
         if let profileImageUrl = self.user?.profileImageUrl {
             cell.profileImageView.loadImageUsingCashWithURLString(urlString: profileImageUrl)
         }
@@ -62,8 +65,9 @@ extension ChatLogController {
                 cellBubbleWidth = 45
             }
             cell.bubbleWidthAnchor?.constant = cellBubbleWidth
+            cell.textView.isHidden = false
         } else if message.imageUrl != nil {
-            
+            cell.textView.isHidden = true
             cell.bubbleWidthAnchor?.constant = 200
         }
         
@@ -88,6 +92,8 @@ extension ChatLogController {
         }else {
             cell.messageImageView.isHidden = true
         }
+        
+        cell.playButton.isHidden = message.videoUrl == nil
     }
     
     // MARK: UICollectionViewDelegate

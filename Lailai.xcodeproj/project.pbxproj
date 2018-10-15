@@ -13,6 +13,7 @@
 		4D03341920F6437200986661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D03341820F6437200986661 /* Assets.xcassets */; };
 		4D03341C20F6437200986661 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D03341A20F6437200986661 /* LaunchScreen.storyboard */; };
 		4D03342520F645AE00986661 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D03342420F645AE00986661 /* LoginController.swift */; };
+		4D065CF521639DA000E52050 /* ChatLogController+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D065CF421639DA000E52050 /* ChatLogController+Firebase.swift */; };
 		4D1274B920F8E61E00DC14E2 /* LoginController+Constrains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1274B820F8E61E00DC14E2 /* LoginController+Constrains.swift */; };
 		4D1274BB20FE281000DC14E2 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1274BA20FE281000DC14E2 /* NewMessageViewController.swift */; };
 		4D1274BE20FE2E2E00DC14E2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1274BD20FE2E2E00DC14E2 /* User.swift */; };
@@ -22,6 +23,7 @@
 		4DBE451B211DCB37003F6292 /* ChatLogController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE451A211DCB37003F6292 /* ChatLogController+CollectionView.swift */; };
 		4DBE451E211DD09D003F6292 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE451D211DD09D003F6292 /* ChatMessageCell.swift */; };
 		4DBE45212122CE47003F6292 /* UIColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBE45202122CE47003F6292 /* UIColorExtention.swift */; };
+		4DEFA0272159212300C3E635 /* ChatLogController+ImageZoomHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEFA0262159212300C3E635 /* ChatLogController+ImageZoomHandling.swift */; };
 		4DF4245920F77D8400FB5702 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4DF4245820F77D8400FB5702 /* GoogleService-Info.plist */; };
 		4DF995FC2108A1090079634F /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF995FB2108A1090079634F /* ChatLogController.swift */; };
 		4DF995FE2110A9630079634F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF995FD2110A9630079634F /* Message.swift */; };
@@ -40,6 +42,7 @@
 		4D03341B20F6437200986661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D03341D20F6437200986661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D03342420F645AE00986661 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		4D065CF421639DA000E52050 /* ChatLogController+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatLogController+Firebase.swift"; sourceTree = "<group>"; };
 		4D1274B820F8E61E00DC14E2 /* LoginController+Constrains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+Constrains.swift"; sourceTree = "<group>"; };
 		4D1274BA20FE281000DC14E2 /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
 		4D1274BD20FE2E2E00DC14E2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		4DBE451A211DCB37003F6292 /* ChatLogController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatLogController+CollectionView.swift"; sourceTree = "<group>"; };
 		4DBE451D211DD09D003F6292 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		4DBE45202122CE47003F6292 /* UIColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtention.swift; sourceTree = "<group>"; };
+		4DEFA0262159212300C3E635 /* ChatLogController+ImageZoomHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatLogController+ImageZoomHandling.swift"; sourceTree = "<group>"; };
 		4DF4245820F77D8400FB5702 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4DF995FB2108A1090079634F /* ChatLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 		4DF995FD2110A9630079634F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -93,7 +97,6 @@
 				4D1274BC20FE2E2000DC14E2 /* Model */,
 				4D1274BF20FE35AF00DC14E2 /* View */,
 				4D03342320F6457300986661 /* Controller */,
-				4DBE451C211DCB9C003F6292 /* ChatLog */,
 				4D03341120F6437100986661 /* AppDelegate.swift */,
 				4D03341820F6437200986661 /* Assets.xcassets */,
 				4D03341D20F6437200986661 /* Info.plist */,
@@ -152,18 +155,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		4DBE451C211DCB9C003F6292 /* ChatLog */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ChatLog;
-			sourceTree = "<group>";
-		};
 		4DBE451F2122CD11003F6292 /* ChatLog */ = {
 			isa = PBXGroup;
 			children = (
 				4DF995FB2108A1090079634F /* ChatLogController.swift */,
 				4DBE451A211DCB37003F6292 /* ChatLogController+CollectionView.swift */,
+				4DEFA0262159212300C3E635 /* ChatLogController+ImageZoomHandling.swift */,
+				4D065CF421639DA000E52050 /* ChatLogController+Firebase.swift */,
 			);
 			path = ChatLog;
 			sourceTree = "<group>";
@@ -293,12 +291,14 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -314,6 +314,7 @@
 			files = (
 				4DF995FC2108A1090079634F /* ChatLogController.swift in Sources */,
 				4D03341420F6437100986661 /* MessagesController.swift in Sources */,
+				4DEFA0272159212300C3E635 /* ChatLogController+ImageZoomHandling.swift in Sources */,
 				4DBE45212122CE47003F6292 /* UIColorExtention.swift in Sources */,
 				4D1274BE20FE2E2E00DC14E2 /* User.swift in Sources */,
 				4DBE451B211DCB37003F6292 /* ChatLogController+CollectionView.swift in Sources */,
@@ -323,6 +324,7 @@
 				4D03342520F645AE00986661 /* LoginController.swift in Sources */,
 				4D1274BB20FE281000DC14E2 /* NewMessageViewController.swift in Sources */,
 				4DF995FE2110A9630079634F /* Message.swift in Sources */,
+				4D065CF521639DA000E52050 /* ChatLogController+Firebase.swift in Sources */,
 				4D1274B920F8E61E00DC14E2 /* LoginController+Constrains.swift in Sources */,
 				4D1274C72101EFEF00DC14E2 /* ImageExtention.swift in Sources */,
 				4D03341220F6437100986661 /* AppDelegate.swift in Sources */,
